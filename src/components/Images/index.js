@@ -154,6 +154,7 @@ class Images extends Component {
                     onRequestClose={() => this.setState({ modalVisible: false })}
                 >
                     <ImageViewer
+                        useNativeDriver
                         index={0}
                         loadingRender={() => (
                             <ActivityIndicator size="small" color="#eee" />

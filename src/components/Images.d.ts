@@ -1,6 +1,7 @@
 import * as React from 'react';
 interface ArrayOfImagesObject {
   caption?: string;
+  local?: boolean;
   captionStyle?: object;
   overlay?: () => React.ReactElement<any>;
   thumbnail?: string;

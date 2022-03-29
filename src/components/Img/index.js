@@ -11,19 +11,19 @@ const Img = props => {
   const hasMoreData = trueTypeOf(image) === 'object';
 
   return (
-    <View style={[styles.container, propsStyle]}>
-      <AsyncImage source={hasMoreData ? getThumbnail(image) : image} />
+      <View style={[styles.container, propsStyle]}>
+        <AsyncImage source={hasMoreData ? getThumbnail(image) : image} isLocal={image.local} />
 
-      {hasMoreData && image.caption && !hideCaption && (
-        <Text style={[styles.caption, image.captionStyle]}>
-          {image.caption}
-        </Text>
-      )}
+        {hasMoreData && image.caption && !hideCaption && (
+            <Text style={[styles.caption, image.captionStyle]}>
+              {image.caption}
+            </Text>
+        )}
 
-      {hasMoreData && image.overlay && (
-        <View style={styles.overlay}>{image.overlay}</View>
-      )}
-    </View>
+        {hasMoreData && image.overlay && (
+            <View style={styles.overlay}>{image.overlay}</View>
+        )}
+      </View>
   );
 };
 

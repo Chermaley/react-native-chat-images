@@ -10,7 +10,6 @@ import {
 import PropTypes from "prop-types";
 import { trueTypeOf } from "../../utils";
 import Img from "../Img";
-import ImageList from "../ImageList";
 import styles from "./styles";
 import ImageViewer from "react-native-image-zoom-viewer";
 
@@ -26,7 +25,7 @@ class Images extends Component {
     };
 
     lessThanFourImages = () => {
-        const { images, backgroundColor, title, extra } = this.props;
+        const { images, backgroundColor, title, extra, ImagePreloader } = this.props;
         const { modalVisible } = this.state;
 
         const allImages = (
@@ -41,6 +40,7 @@ class Images extends Component {
                             style={styles.flexOne}
                         >
                             <Img
+                                ImagePreloader={ImagePreloader}
                                 hideCaption={images.length !== 1}
                                 style={styles.flexOne}
                                 image={image}
@@ -70,7 +70,7 @@ class Images extends Component {
                             activeOpacity={0.8}
                             style={styles.flexBasisHalf}
                         >
-                            <Img hideCaption image={image} />
+                            <Img hideCaption ImagePreloader={ImagePreloader} image={image} />
                         </TouchableOpacity>
                     ))}
                 </View>
@@ -92,14 +92,14 @@ class Images extends Component {
                         activeOpacity={0.8}
                         style={styles.flexBasisHalf}
                     >
-                        <Img hideCaption image={images[0]} />
+                        <Img hideCaption ImagePreloader={ImagePreloader} image={images[0]} />
                     </TouchableOpacity>
                     <TouchableOpacity
                         onPress={() => this.showImageListModal(!modalVisible, 1)}
                         activeOpacity={0.8}
                         style={styles.flexBasisHalf}
                     >
-                        <Img hideCaption image={images[1]} />
+                        <Img hideCaption ImagePreloader={ImagePreloader} image={images[1]} />
                     </TouchableOpacity>
                 </View>
 
@@ -109,7 +109,7 @@ class Images extends Component {
                         activeOpacity={0.8}
                         style={styles.flexBasisHalf}
                     >
-                        <Img hideCaption image={images[2]} />
+                        <Img hideCaption ImagePreloader={ImagePreloader} image={images[2]} />
                     </TouchableOpacity>
 
                     <TouchableOpacity
@@ -121,7 +121,7 @@ class Images extends Component {
                             <View style={styles.moreImagesOverlay}>
                                 <Text style={styles.imagesCount}>+{images.length - 3}</Text>
                             </View>
-                            <Img hideCaption image={images[3]} />
+                            <Img hideCaption ImagePreloader={ImagePreloader} image={images[3]} />
                         </View>
                     </TouchableOpacity>
                 </View>
@@ -131,7 +131,7 @@ class Images extends Component {
     };
 
     render() {
-        const { backgroundColor, images, saveOnLongPress, style, title, width } =
+        const { backgroundColor, images, saveOnLongPress, style, title, width, ImagePreloader } =
             this.props;
         const { activeImageIndex, modalVisible } = this.state;
 

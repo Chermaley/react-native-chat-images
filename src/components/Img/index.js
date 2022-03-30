@@ -7,12 +7,12 @@ import { trueTypeOf, getThumbnail } from '../../utils';
 import styles from './styles';
 
 const Img = props => {
-  const { style: propsStyle, image, hideCaption } = props;
+  const { style: propsStyle, image, hideCaption, ImagePreloader } = props;
   const hasMoreData = trueTypeOf(image) === 'object';
 
   return (
       <View style={[styles.container, propsStyle]}>
-        <AsyncImage source={hasMoreData ? getThumbnail(image) : image} isLocal={image.local} />
+        <AsyncImage ImagePreloader={ImagePreloader} isLocal={image.local} source={hasMoreData ? getThumbnail(image) : image} />
 
         {hasMoreData && image.caption && !hideCaption && (
             <Text style={[styles.caption, image.captionStyle]}>

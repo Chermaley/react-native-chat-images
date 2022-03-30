@@ -28,6 +28,7 @@ export default class Images extends React.Component<Props, State> {
     style: {};
     title: undefined;
     width: string;
+    ImagePreloader: Jsx.Element
   };
   state: State;
   showImageListModal: (modalVisible: boolean, activeImageIndex: number) => void;

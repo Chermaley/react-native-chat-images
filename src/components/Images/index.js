@@ -154,6 +154,8 @@ class Images extends Component {
                     onRequestClose={() => this.setState({ modalVisible: false })}
                 >
                     <ImageViewer
+                        enableSwipeDown
+                        onSwipeDown={() => this.setState({ modalVisible: false })}
                         useNativeDriver
                         index={0}
                         loadingRender={() => (

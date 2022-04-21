@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Image, View } from "react-native";
+import { Image, View, Platform} from "react-native";
 import PropTypes from "prop-types";
 import styles from "./styles";
 
@@ -19,7 +19,7 @@ class AsyncImage extends Component {
                         source={{ uri: source }}
                         style={{...styles.img, opacity: loaded || isLocal ? 1: 0}}
                     />
-                    {!isLocal && !loaded && ImagePreloader}
+                    {Platform.OS !== 'ios' && !isLocal && !loaded && ImagePreloader}
                 </View>
             </View>
         );
